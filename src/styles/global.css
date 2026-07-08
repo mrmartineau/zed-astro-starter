@@ -1,0 +1,37 @@
+/*
+ * Global stylesheet — the single CSS entry point, imported by BaseLayout.
+ *
+ * ZUI owns the reset, base layer, components, and utilities via its
+ * cascade layers: @layer zui.reset, zui.base, zui.components, zui.utilities.
+ * Customise by overriding its design tokens below — don't re-declare base
+ * styles (body font, margins, box-sizing) that ZUI already provides.
+ */
+
+@import "@mrmartineau/zui/css";
+
+/*
+ * Theme — override ZUI design tokens here.
+ * Use light-dark() for values that differ between themes, and
+ * oklch(from …) relative colour syntax to derive tints and shades.
+ */
+:root {
+  /* --font-body: 'Inter', var(--font-stack-sans); */
+  /* --color-theme: oklch(0.6 0.2 250); */
+  /* --color-accent: oklch(0.7 0.15 160); */
+  /* --radius-scale: 1; */
+}
+
+/*
+ * Component overrides — target ZUI component classes and set their custom
+ * properties. Rules here sit outside ZUI's @layer stack, so they win over
+ * zui.components without needing !important. e.g.
+ *
+ * .zui-card {
+ *   --zui-card-radius: var(--radius-sm);
+ * }
+ */
+
+/*
+ * Global styles — site-wide rules ZUI doesn't cover (list styles, base
+ * font-size tweaks, etc.).
+ */

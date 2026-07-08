@@ -1,0 +1,20 @@
+---
+const siteName = 'Astro Starter'
+const year = new Date().getFullYear()
+---
+
+<footer class="footer">
+	<p class="zui-text--1 zui-color-muted">
+		&copy; {year} {siteName}. All rights reserved.
+	</p>
+</footer>
+
+<style>
+	.footer {
+		max-inline-size: 65rem;
+		margin-inline: auto;
+		width: 100%;
+		padding: var(--space-sm) var(--space-sm-md);
+		border-block-start: 1px var(--border-style) var(--color-border);
+	}
+</style>

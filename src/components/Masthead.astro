@@ -1,0 +1,51 @@
+---
+import { Link } from '@mrmartineau/zui/astro'
+
+const siteName = 'Astro Starter'
+const navItems = [
+	{ label: 'Home', href: '/' },
+	{ label: 'About', href: '/about' },
+	{ label: 'Contact', href: '/contact' },
+]
+---
+
+<header class="masthead">
+	<a class="masthead-brand" href="/">{siteName}</a>
+	<nav aria-label="Main">
+		<ul class="masthead-nav flex items-center gap-md">
+			{
+				navItems.map((item) => (
+					<li>
+						<Link href={item.href}>{item.label}</Link>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</header>
+
+<style>
+	.masthead {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-sm);
+		max-inline-size: 65rem;
+		margin-inline: auto;
+		width: 100%;
+		padding: var(--space-sm) var(--space-sm-md);
+		border-block-end: 1px var(--border-style) var(--color-border);
+	}
+
+	.masthead-brand {
+		font-size: var(--step-1);
+		font-weight: 700;
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+	.masthead-nav {
+		list-style: none;
+		padding: 0;
+	}
+</style>
