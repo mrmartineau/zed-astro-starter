@@ -71,3 +71,11 @@ One-time setup:
    - `CLOUDFLARE_API_TOKEN` — API token with Workers edit permission
    - `CLOUDFLARE_ACCOUNT_ID` — from the Cloudflare dashboard
 2. If the project was ever connected to Cloudflare's built-in Git integration, disable it so the two deploy paths don't conflict.
+
+## More Astro packages
+
+Other Astro tools I have made:
+
+- [astro-git-dates](https://github.com/mrmartineau/astro-git-dates): set content collection dates from git history
+- [astro-d1-search](https://github.com/mrmartineau/astro-d1-search): site search for Astro backed by Cloudflare D1
+- [ZUI](https://github.com/mrmartineau/zui): a CSS-first UI library with Astro (and React, Solid, Svelte, Vue) components
