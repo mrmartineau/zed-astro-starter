@@ -9,6 +9,15 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      skip_package_age:
+        description: "Bypass Aikido safe-chain minimum package age check"
+        type: boolean
+        default: false
+      skip_safe_chain:
+        description: "Install without Aikido safe-chain (only when its service is down)"
+        type: boolean
+        default: false
 
 jobs:
   Deploy-Production:
@@ -23,10 +32,15 @@ jobs:
         with:
           node-version: "latest"
           cache: "pnpm"
+      # Every install goes through safe-chain's policy check and proxy. When
+      # its service is down ("Safe-chain: Uncaught exception: unexpected end
+      # of file" while verifying the lockfile, then every fetch fails), run
+      # the workflow by hand with skip_safe_chain to deploy without it.
       - name: Install safe-chain
+        if: ${{ !inputs.skip_safe_chain }}
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile ${{ inputs.skip_package_age && !inputs.skip_safe_chain && '--safe-chain-skip-minimum-package-age' || '' }}
       - name: Build site
         run: pnpm build
       - name: Deploy to Cloudflare

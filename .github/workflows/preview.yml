@@ -1,0 +1,50 @@
+name: Preview on Cloudflare
+
+on:
+  pull_request:
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  Deploy-Preview:
+    # Fork PRs get no secrets, so skip them.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "latest"
+          cache: "pnpm"
+      - name: Install safe-chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build site
+        run: pnpm build
+      # Uploads a new version without promoting it to production. The alias
+      # gives each PR a stable URL: pr-<number>-<worker>.<subdomain>.workers.dev
+      - name: Upload preview version
+        id: upload
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: versions upload --preview-alias pr-${{ github.event.pull_request.number }} --message "PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.head.sha }}"
+      - name: Comment preview URL
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTPUT: ${{ steps.upload.outputs.command-output }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          url=$(echo "$OUTPUT" | grep -o 'https://pr-[^ ]*workers\.dev' | head -1)
+          [ -n "$url" ] || url=$(echo "$OUTPUT" | grep -o 'https://[^ ]*workers\.dev' | head -1)
+          gh pr comment ${{ github.event.pull_request.number }} --repo ${{ github.repository }} \
+            --edit-last --create-if-none \
+            --body "🔍 Preview: $url (commit ${SHA:0:7})"
