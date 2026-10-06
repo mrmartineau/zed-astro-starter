@@ -1,10 +1,17 @@
 ---
+import { Link, Prose } from '@mrmartineau/zui/astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { site } from '../site'
 ---
 
-<BaseLayout title="Astro Starter">
-	<div class="prose">
-		<h1>Astro Starter</h1>
-		<p>Welcome to the Astro starter, styled with ZUI.</p>
-	</div>
+<BaseLayout>
+	<Prose>
+		<h1>{site.name}</h1>
+		<p>{site.description}</p>
+		<p>
+			Edit <code>src/site.ts</code> to set the site name, description and contact email. Add a page by
+			adding a file to <code>src/pages/</code>.
+		</p>
+		<p><Link href="/about">Read more about this site</Link></p>
+	</Prose>
 </BaseLayout>

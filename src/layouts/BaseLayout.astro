@@ -2,13 +2,15 @@
 import '../styles/global.css'
 import Footer from '../components/Footer.astro'
 import Masthead from '../components/Masthead.astro'
+import { site } from '../site'
 
 interface Props {
 	title?: string
 	description?: string
 }
 
-const { title = 'Astro Starter', description } = Astro.props
+const { title, description = site.description } = Astro.props
+const fullTitle = title ? `${title} · ${site.name}` : site.name
 ---
 
 <html lang="en">
@@ -18,8 +20,8 @@ const { title = 'Astro Starter', description } = Astro.props
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		{description && <meta name="description" content={description} />}
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
 		<slot name="head" />
 	</head>
 	<body>

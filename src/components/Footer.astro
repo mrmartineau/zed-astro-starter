@@ -1,11 +1,12 @@
 ---
-const siteName = 'Astro Starter'
+import { site } from '../site'
+
 const year = new Date().getFullYear()
 ---
 
 <footer class="footer">
 	<p class="zui-text--1 zui-color-muted">
-		&copy; {year} {siteName}. All rights reserved.
+		&copy; {year} {site.name}. All rights reserved.
 	</p>
 </footer>
 

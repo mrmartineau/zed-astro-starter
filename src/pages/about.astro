@@ -1,0 +1,22 @@
+---
+import { Link, Prose } from '@mrmartineau/zui/astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { site } from '../site'
+---
+
+<BaseLayout title="About" description={`About ${site.name}.`}>
+	<Prose>
+		<h1>About</h1>
+		<p>
+			Say who you are, what this site is for and who it is for. Keep it short: one or two paragraphs is
+			enough for most sites.
+		</p>
+		<h2>What this site does</h2>
+		<ul>
+			<li>The first thing a visitor can do here.</li>
+			<li>The second thing.</li>
+			<li>The third thing.</li>
+		</ul>
+		<p>Questions? <Link href="/contact">Get in touch</Link>.</p>
+	</Prose>
+</BaseLayout>

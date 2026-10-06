@@ -25,11 +25,24 @@ An opinionated [Astro](https://astro.build) starter, ready to deploy to Cloudfla
 │   │   └── Footer.astro    # Copyright + current year
 │   ├── layouts/
 │   │   └── BaseLayout.astro # Wraps every page; ZUI CSS, head slot, masthead, footer
-│   └── pages/
-│       └── index.astro     # Routes map to files in this directory
+│   ├── pages/              # Routes map to files in this directory
+│   │   ├── index.astro
+│   │   ├── about.astro     # Placeholder content to replace
+│   │   ├── contact.astro   # Email link from src/site.ts
+│   │   └── 404.astro       # Served by the Worker for unknown URLs
+│   ├── styles/
+│   │   └── global.css      # ZUI import + theme token overrides
+│   └── site.ts             # Site name, description, email, nav links
 ├── astro.config.mjs        # Astro + Cloudflare adapter config
 └── wrangler.jsonc          # Cloudflare Worker config
 ```
+
+## Starting a new project
+
+1. Change `name` in `package.json`, `wrangler.jsonc` and `portless` (in `package.json`). The Worker name sets the production and preview URLs.
+2. Set the site name, description, contact email and nav links in `src/site.ts`.
+3. Replace the placeholder text in `src/pages/about.astro` and `src/pages/contact.astro`.
+4. Set your brand colours and fonts as ZUI token overrides in `src/styles/global.css`.
 
 ## Layout
 
@@ -46,21 +59,25 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 </BaseLayout>
 ```
 
+`title` becomes `Page title · Site name`. Leave it out on the home page to show only the site name. `description` falls back to the one in `src/site.ts`.
+
 Styling comes from ZUI: use its components (`@mrmartineau/zui/astro`), design tokens (`--space-*`, `--color-*`, `--step-*`, …), and utility classes rather than hard-coded values. ZUI owns the CSS reset and base layer.
 
 ## Commands
 
 All commands run from the project root:
 
-| Command        | Action                                            |
-| :------------- | :------------------------------------------------ |
-| `vp install`   | Install dependencies                              |
-| `pnpm dev`     | Start local dev server at `localhost:4321`        |
-| `pnpm build`   | Build the production site to `./dist/`            |
-| `pnpm preview` | Preview the build locally                         |
-| `pnpm deploy`  | Build and deploy to Cloudflare (needs local auth) |
-| `vp check`     | Format, lint, and type check                      |
-| `vp test`      | Run tests                                         |
+| Command        | Action                                                        |
+| :------------- | :------------------------------------------------------------ |
+| `vp install`   | Install dependencies                                          |
+| `pnpm dev`     | Start the dev server at `https://zed-astro-starter.localhost` |
+| `pnpm build`   | Build the production site to `./dist/`                        |
+| `pnpm preview` | Preview the build locally                                     |
+| `pnpm deploy`  | Build and deploy to Cloudflare (needs local auth)             |
+| `vp check`     | Format, lint, and type check                                  |
+| `vp test`      | Run tests                                                     |
+
+`pnpm dev` needs [portless](https://github.com/vercel-labs/portless) on your `PATH`. Without it, run `pnpm astro dev` and open `http://localhost:4321`.
 
 ## Deployment
 
