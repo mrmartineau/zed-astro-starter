@@ -117,4 +117,5 @@ Other Astro tools I have made:
 
 - [astro-git-dates](https://github.com/mrmartineau/astro-git-dates): set content collection dates from git history
 - [astro-d1-search](https://github.com/mrmartineau/astro-d1-search): site search for Astro backed by Cloudflare D1
+- [astro-d1-reactions](https://github.com/mrmartineau/astro-d1-reactions): page reactions, unique reads and reader highlights, kept in Cloudflare D1
 - [ZUI](https://github.com/mrmartineau/zui): a CSS-first UI library with Astro (and React, Solid, Svelte, Vue) components
