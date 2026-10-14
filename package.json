@@ -14,7 +14,7 @@
     "@astrojs/cloudflare": "^14.3.3",
     "@mrmartineau/kit": "^1.0.0",
     "@mrmartineau/zui": "^1.6.2",
-    "astro": "^7.3.5"
+    "astro": "^7.3.8"
   },
   "devDependencies": {
     "vite": "catalog:",
