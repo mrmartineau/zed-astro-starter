@@ -2,6 +2,12 @@
 
 An Astro 7 starter: static output, ZUI for styling, deployed to Cloudflare Workers. See `README.md` for the full setup.
 
+## Coding standards
+
+Follow the `coding-standards` skill (`~/code/mrmartineau/agent-skills/skills/coding-standards/`). Where this file and the skill disagree, this file wins: it describes how this repo already works. Do not rename existing files or classes to match the skill unless asked.
+
+Known differences from the skill: PascalCase component files (`BaseLayout.astro`), and ZUI's Astro components instead of hand-written class names.
+
 ## Development
 
 - Package manager is pnpm (pinned in `package.json`). Do not use npm; `devEngines` blocks it.
