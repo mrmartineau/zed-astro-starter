@@ -1,7 +1,7 @@
 ---
 import { Link, Prose } from '@mrmartineau/zui/astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { site } from '../site'
+import { routes, site } from '../site'
 ---
 
 <BaseLayout>
@@ -12,6 +12,6 @@ import { site } from '../site'
 			Edit <code>src/site.ts</code> to set the site name, description and contact email. Add a page by
 			adding a file to <code>src/pages/</code>.
 		</p>
-		<p><Link href="/about">Read more about this site</Link></p>
+		<p><Link href={routes.about}>Read more about this site</Link></p>
 	</Prose>
 </BaseLayout>

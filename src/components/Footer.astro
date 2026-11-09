@@ -5,17 +5,24 @@ const year = new Date().getFullYear()
 ---
 
 <footer class="footer">
-	<p class="zui-text--1 zui-color-muted">
+	<p class="footer-text">
 		&copy; {year} {site.name}. All rights reserved.
 	</p>
 </footer>
 
 <style>
-	.footer {
-		max-inline-size: 65rem;
-		margin-inline: auto;
-		width: 100%;
-		padding: var(--space-sm) var(--space-sm-md);
-		border-block-start: 1px var(--border-style) var(--color-border);
+	@layer components {
+		.footer {
+			max-inline-size: var(--site-max-inline-size);
+			margin-inline: auto;
+			inline-size: 100%;
+			padding: var(--space-sm) var(--space-sm-md);
+			border-block-start: 1px var(--border-style) var(--color-border);
+		}
+
+		.footer-text {
+			font-size: var(--step--1);
+			color: var(--color-muted);
+		}
 	}
 </style>

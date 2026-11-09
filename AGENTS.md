@@ -17,7 +17,7 @@ Known differences from the skill: PascalCase component files (`BaseLayout.astro`
 
 ## Conventions
 
-- Site name, description, contact email and nav links live in `src/site.ts`. Read them from there; do not hard-code them.
+- Site name, description, contact email, page paths (`routes`) and nav links live in `src/site.ts`. Read them from there; do not hard-code them.
 - Every page wraps itself in `src/layouts/BaseLayout.astro`. Pass `title` (the layout appends the site name) and `description`.
 - Use ZUI's Astro components (`@mrmartineau/zui/astro`), design tokens and utility classes. Do not write raw `zui-` class markup or hard-coded colours and spacing. Theme overrides go in `src/styles/global.css`.
 - Vite+ supplies Vite: `vite` resolves to `@voidzero-dev/vite-plus-core` through the pnpm catalog in `pnpm-workspace.yaml`. When you bump `vite-plus` there, bump the `vite-plus-core` version on the `vite:` line to the same number, or the dev server crashes on a missing native binding.
