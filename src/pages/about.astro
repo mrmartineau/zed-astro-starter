@@ -1,7 +1,7 @@
 ---
 import { Link, Prose } from '@mrmartineau/zui/astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { site } from '../site'
+import { routes, site } from '../site'
 ---
 
 <BaseLayout title="About" description={`About ${site.name}.`}>
@@ -17,6 +17,6 @@ import { site } from '../site'
 			<li>The second thing.</li>
 			<li>The third thing.</li>
 		</ul>
-		<p>Questions? <Link href="/contact">Get in touch</Link>.</p>
+		<p>Questions? <Link href={routes.contact}>Get in touch</Link>.</p>
 	</Prose>
 </BaseLayout>

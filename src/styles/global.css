@@ -5,7 +5,13 @@
  * cascade layers: @layer zui.reset, zui.base, zui.components, zui.utilities.
  * Customise by overriding its design tokens below — don't re-declare base
  * styles (body font, margins, box-sizing) that ZUI already provides.
+ *
+ * Every rule goes in a layer. The order below must load first: a later
+ * layer wins, so `components` beats ZUI without !important. Rules outside
+ * any layer beat every layer, so do not leave any.
  */
+
+@layer zui, base, components, utilities;
 
 @import "@mrmartineau/zui/css";
 
@@ -14,24 +20,30 @@
  * Use light-dark() for values that differ between themes, and
  * oklch(from …) relative colour syntax to derive tints and shades.
  */
-:root {
-  /* --font-body: 'Inter', var(--font-stack-sans); */
-  /* --color-theme: oklch(0.6 0.2 250); */
-  /* --color-accent: oklch(0.7 0.15 160); */
-  /* --radius-scale: 1; */
+@layer base {
+  :root {
+    /* Widest the masthead, main content and footer get. */
+    --site-max-inline-size: 65rem;
+
+    /* --font-body: 'Inter', var(--font-stack-sans); */
+    /* --color-theme: oklch(0.6 0.2 250); */
+    /* --color-accent: oklch(0.7 0.15 160); */
+    /* --radius-scale: 1; */
+  }
 }
 
 /*
  * Component overrides — target ZUI component classes and set their custom
- * properties. Rules here sit outside ZUI's @layer stack, so they win over
- * zui.components without needing !important. e.g.
+ * properties, inside @layer components so they win over zui.components. e.g.
  *
- * .zui-card {
- *   --zui-card-radius: var(--radius-sm);
+ * @layer components {
+ *   .zui-card {
+ *     --zui-card-radius: var(--radius-sm);
+ *   }
  * }
  */
 
 /*
  * Global styles — site-wide rules ZUI doesn't cover (list styles, base
- * font-size tweaks, etc.).
+ * font-size tweaks, etc.). Put them in @layer base.
  */

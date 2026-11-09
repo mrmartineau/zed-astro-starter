@@ -1,12 +1,13 @@
 ---
 import { Link, Prose } from '@mrmartineau/zui/astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { routes } from '../site'
 ---
 
 <BaseLayout title="Page not found">
 	<Prose>
 		<h1>Page not found</h1>
 		<p>This page does not exist. It may have moved.</p>
-		<p><Link href="/">Go to the home page</Link></p>
+		<p><Link href={routes.home}>Go to the home page</Link></p>
 	</Prose>
 </BaseLayout>
