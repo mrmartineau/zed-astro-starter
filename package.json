@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^14.3.3",
     "@mrmartineau/kit": "^1.0.0",
-    "@mrmartineau/zui": "^1.6.2",
+    "@mrmartineau/zui": "^1.7.0",
     "astro": "^7.3.5"
   },
   "devDependencies": {

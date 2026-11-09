@@ -223,8 +223,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(typescript@6.0.3)
       '@mrmartineau/zui':
-        specifier: ^1.6.2
-        version: 1.6.2(astro@7.3.5(typescript@6.0.3))(typescript@6.0.3)
+        specifier: ^1.7.0
+        version: 1.7.0(astro@7.3.5(typescript@6.0.3))(typescript@6.0.3)
       astro:
         specifier: ^7.3.5
         version: 7.3.5(typescript@6.0.3)
@@ -1150,8 +1150,8 @@ packages:
       eslint:
         optional: true
 
-  '@mrmartineau/zui@1.6.2':
-    resolution: {integrity: sha512-muBO9d1UhNPmfbIOUy7GUBDuHGvoJ0+sItZwRSib/tVX8qcZZREcGvOAzfxQldRdndDHVJsTieRzLUZYS5t+kA==}
+  '@mrmartineau/zui@1.7.0':
+    resolution: {integrity: sha512-F2bTm4PxvN7RhzS88lQIn60GBuHh/f1EiJz7sV+XeiCLTDwzdbpPqlvmPQy/4cd/evXooE2d/vKv7HfV/LaAYA==}
     hasBin: true
     peerDependencies:
       astro: ^6.0.0 || ^7.0.0
@@ -3462,7 +3462,7 @@ snapshots:
     dependencies:
       typescript: 6.0.3
 
-  '@mrmartineau/zui@1.6.2(astro@7.3.5(typescript@6.0.3))(typescript@6.0.3)':
+  '@mrmartineau/zui@1.7.0(astro@7.3.5(typescript@6.0.3))(typescript@6.0.3)':
     dependencies:
       cva: 1.0.0-beta.4(typescript@6.0.3)
     optionalDependencies:
